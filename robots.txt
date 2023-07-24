@@ -1,5 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: http://count.jellyw.com/sitemap_count.xml
-Sitemap: http://jellyw.com/sitemap_jellyw.xml
+Sitemap: http://count.jellyw.com/sitemap.xml
