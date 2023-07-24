@@ -36,6 +36,19 @@
             border-radius: 4px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
+        #removeSpacesButton {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
         footer {
             margin-top: 50px; /* 增加顶部间距 */
             font-size: 12px; /* 减小字体大小 */
@@ -51,6 +64,7 @@
         <input type="checkbox" id="ignoreEmptyLines" onclick="calculateLinesAndWords()"> Ignore empty lines<br>
         <div id="result">Lines: <span id="lineCount">0</span></div>
         <div id="result">Words: <span id="wordCount">0</span></div>
+        <button id="removeSpacesButton" onclick="removeSpaces()">Remove Spaces</button><br>      
     </main>
     <footer>
         <a href="https://jellyw.com" target="_blank">Make by JellyW</a> | 
@@ -70,6 +84,13 @@
 
             var words = text.replace(/[\n\s]/g, '');
             document.getElementById('wordCount').textContent = words.length;
+        }
+
+        function removeSpaces() {
+            var text = document.getElementById('text').value;
+            var newText = text.replace(/\s/g, '');
+            document.getElementById('text').value = newText;
+            calculateLinesAndWords();
         }
     </script>
 </body>
