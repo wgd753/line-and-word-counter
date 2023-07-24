@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple tool to count lines and words in a text.">
+    <meta name="keywords" content="line counter, word counter, text tool">
+    <title>Line and Word Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #F5F5F5;
+        }
+        h1 {
+            color: #333;
+        }
+        #text {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        #result {
+            font-size: 20px;
+            color: #333;
+            margin-top: 10px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Line and Word Counter</h1>
+    </header>
+    <main>
+        <textarea id="text" oninput="calculateLinesAndWords()" placeholder="Paste your text here..."></textarea><br>
+        <input type="checkbox" id="ignoreEmptyLines" onclick="calculateLinesAndWords()"> Ignore empty lines<br>
+        <div id="result">Lines: <span id="lineCount">0</span></div>
+        <div id="result">Words: <span id="wordCount">0</span></div>
+    </main>
+    <script>
+        function calculateLinesAndWords() {
+            var text = document.getElementById('text').value;
+            var ignoreEmptyLines = document.getElementById('ignoreEmptyLines').checked;
+            var lines = text ? text.split('\n') : [];
+            if (ignoreEmptyLines) {
+                lines = lines.filter(function(line) {
+                    return line.trim() != '';
+                });
+            }
+            document.getElementById('lineCount').textContent = lines.length;
+
+            var words = text.replace(/[\n\s]/g, '');
+            document.getElementById('wordCount').textContent = words.length;
+        }
+    </script>
+</body>
+</html>
