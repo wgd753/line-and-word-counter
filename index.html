@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A simple tool to count lines and words in a text.">
-    <meta name="keywords" content="line counter, word counter, text tool, online counter, counter online, lines counter, line counter online, linecounter">
+    <meta name="description" content="A simple tool to count lines, words and bytes in a text.">
+    <meta name="keywords" content="line counter, word counter, byte counter, text tool, online counter, counter online, lines counter, line counter online, linecounter">
     <meta name="robots" content="index,follow" />
-    <title>Line and Word Counter</title>
+    <title>Line, Word and Byte Counter</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,6 +65,7 @@
         <input type="checkbox" id="ignoreEmptyLines" onclick="calculateLinesAndWords()"> Ignore empty lines<br>
         <div id="result">Lines: <span id="lineCount">0</span></div>
         <div id="result">Words: <span id="wordCount">0</span></div>
+        <div id="result">Bytes: <span id="byteCount">0</span></div>
         <button id="removeSpacesButton" onclick="removeSpaces()">Remove Spaces</button><br>      
     </main>
     <footer>
@@ -85,6 +86,10 @@
 
             var words = text.replace(/[\n\s]/g, '');
             document.getElementById('wordCount').textContent = words.length;
+
+            var bytes = new Blob([text]).size;
+            document.getElementById('byteCount').textContent = bytes;
+
         }
 
         function removeSpaces() {
